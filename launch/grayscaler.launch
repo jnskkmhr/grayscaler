@@ -1,0 +1,14 @@
+<launch>
+    <arg name="input_topic_left" default="/camera/left/image_rect_raw"/>
+    <arg name="output_topic_left" default="/camera/left/image_mono_raw"/>
+    <arg name="input_topic_right" default="/camera/right/image_rect_raw"/>
+    <arg name="output_topic_right" default="/camera/right/image_mono_raw"/>
+
+    <node name="image_to_grayscale_left" pkg="grayscaler" type="grayscaler.py" 
+          output="screen" args="$(arg input_topic_left) $(arg output_topic_left)">
+    </node>
+    
+    <node name="image_to_grayscale_right" pkg="grayscaler" type="grayscaler.py" 
+          output="screen" args="$(arg input_topic_right) $(arg output_topic_right)">
+    </node>
+</launch>
